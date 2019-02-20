@@ -1,0 +1,62 @@
+{% extends 'core/layout.html' %}
+{% load static %}
+
+{% block head %}
+
+    <link
+        href="http://cdn.pydata.org/bokeh/release/bokeh-1.0.4.min.css"
+        rel="stylesheet" type="text/css"
+    >
+    <link
+        href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-1.0.4.min.css"
+        rel="stylesheet" type="text/css"
+    >
+    <link
+        href="http://cdn.pydata.org/bokeh/release/bokeh-tables-1.0.4.min.css"
+        rel="stylesheet" type="text/css"
+    >
+
+    <script src="http://cdn.pydata.org/bokeh/release/bokeh-1.0.4.min.js"></script>
+    <script src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-1.0.4.min.js"></script>
+    <script src="http://cdn.pydata.org/bokeh/release/bokeh-tables-1.0.4.min.js"></script>
+    <script src="http://cdn.pydata.org/bokeh/release/bokeh-api-1.0.4.min.jss"></script>
+
+{% endblock %}
+
+{% block content %}
+    <h2>COMPARE TEST EXECUTION PROGRESS FOR DATES:</h2>
+    <h2>{{start_date}} -- {{end_date}}</h2>
+{% endblock %}
+
+{% block content2 %}
+
+
+<div id="myplot" style="display: table; margin: 0 auto;"></div><br><br>
+
+<div id="results">
+    <p><b>Note:</b> test suit duration is lower, because tests are executing in parallel!</p><br>
+
+    {% for testId, testDict in ts_dict.items %}
+        <div>
+            <h4>ID: {{testId}}</h4>
+            <p>Launched at: {{ testDict.created }}</p>
+            <p>Number of errors: {{ testDict.numOfErrs }}</p>
+            <p class="info">Whole test suit duration: {{ testDict.TestSuiteDuration }} min</p>
+        </div><br>
+    {% endfor %}
+</div>
+
+<script>
+    try{
+        fetch(`http://${window.location.host}/stats/get-bokeh-compare/{{start_date}}/{{end_date}}`)
+            .then(function(response) {
+                return response.json();
+                })
+            .then(function(item) {
+                Bokeh.embed.embed_item(item);
+                })
+    } catch(e) {
+        console.log(e);
+    }
+</script>
+{% endblock %}

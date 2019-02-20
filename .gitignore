@@ -1,0 +1,10 @@
+*.pyc
+*.log
+*.sqlite3
+.DS_Store
+.idea
+.vscode
+venv/
+src/core/migrations
+src/stats/migrations
+data/db/

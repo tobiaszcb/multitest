@@ -1,0 +1,53 @@
+{% extends 'core/layout.html' %}
+{% load static %}
+
+{% block head %}
+    <script src={% static 'js/createDivForTestResult.js' %}></script>
+    <script src={% static 'js/toggleOut.js' %}></script>
+    <script src={% static 'js/isExists.js' %}></script>
+    <script src={% static 'js/launchMultitest.js' %}></script>
+    <script src={% static 'js/markAsFinished.js' %}></script>
+{% endblock %}
+
+{% block content %}
+<body>
+   <div id="zero">
+        <div id="one">
+            <h2 class="status">Running...</h2>
+        </div>
+        <div id="two">
+            <div class="loader"></div>
+        </div>
+        <button id="cancel" class="btn btn-dark">CANCEL</button>
+    </div>
+</body>
+
+{% endblock %}
+
+{% block content2 %}
+
+    <div>
+      <div class="result">
+        <h3>RESULTS</h3>
+      </div>
+    </div>
+
+    <script>
+        $(window).ready( () => {
+            {% if should_launch %} // LAUNCH TESTS WHEN PAGE LOADS
+                console.log("Launched tests")
+                launchTests();
+                markAsStarted();
+                // ADD EVENT LISTENER TO CANCEL BUTTON TO TERMINATE TESTS
+                let cancel = document.querySelectorAll('button[id=cancel]')[0];
+                cancel.addEventListener("click", cancelTests);
+            {% else %}
+                console.log("Not launching")
+                cleanUp();
+                markAsFinished();
+                return;
+            {% endif %}
+        });
+    </script>
+
+{% endblock %}

@@ -1,0 +1,129 @@
+body {
+      font: 20px Montserrat, sans-serif;
+      line-height: 1.8;
+      color: #f5f6f7;
+  }
+
+  p.err {
+      font-size: 8 px;
+      background-color: #ffc9c9;
+  }
+  p.out {
+      font-size: 8 px;
+  }
+
+  p.pop {
+    display: none;
+  }
+  p.pop:hover {
+    display: block;
+  }
+
+  a.stats {
+    font-size: 10px;
+  }
+
+  .zoom {
+    padding: 50px;
+    transition: transform .1s;
+    margin: 0 auto;
+  }
+  
+  .zoom:hover {
+    -ms-transform: scale(1.1); /* IE 9 */
+    -webkit-transform: scale(1.1); /* Safari 3-8 */
+    transform: scale(1.1); 
+  }
+
+  p {font-size: 14px;}
+  .margin {margin-bottom: 45px;}
+  .bg-1 {
+      background-color: #1abc9c; /* Green */
+
+      color: #ffffff;
+  }
+  .bg-2 {
+      background-color: #d0cfcf; /* Gray */
+      color: #ffffff;
+  }
+  .bg-3 {
+      background-color: #1abc9c92; /* Light Green */
+      color: #555555;
+  }
+  .bg-4 {
+      background-color: #2f2f2f; /* Black Gray */
+      color: #fff;
+  }
+  .container-fluid {
+      padding-top: 70px;
+      padding-bottom: 70px;
+  }
+  .navbar {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      border: 0;
+      border-radius: 0;
+      margin-bottom: 0;
+      font-size: 12px;
+      letter-spacing: 5px;
+  }
+  .navbar-nav  li a:hover {
+      color: #1abc9c !important;
+  }
+  .test-button {
+    background-color: white;
+    color: black;
+    border: none; /* Green */
+    width: 320px;
+  }
+
+  section {
+    width: 30%;
+    height: 40px;
+    margin: auto;
+    text-align: center;
+    vertical-align:middle;
+}
+
+div#zero {
+    vertical-align:middle;
+    display: inline-block;
+}
+
+div#one {
+    width: 40%;
+    display: inline-block;
+    vertical-align:middle;
+}
+div#two {
+    margin-left: 40%;
+    display: inline-block;
+    vertical-align:middle;
+}
+
+  .loader {
+    border: 3px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 5px solid #000000;
+    width: 30px;
+    height: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+.dateWidgetClass {
+
+}

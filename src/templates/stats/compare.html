@@ -1,0 +1,24 @@
+{% extends 'core/layout.html' %}
+{% load static %}
+
+{% block content %}
+    <h2>SELECT DATE RANGE</h2>
+{% endblock %}
+
+
+{% block content2 %}
+
+    <form action="{% url 'stats:compare' %}" method="get">
+        {% csrf_token %}
+        {{form.as_p}}
+        <br>
+        <input class="btn" type="submit" value="GENERATE CHART">
+    </form><br>
+
+<p>The results of all tests carried out in the selected period will be downloaded.</p>
+<p>For each ignited set of tests, a graph will be generated showing the accumulated duration of tests.</p>
+<p>During single firing of collection of tests, tests are performed by several processes simultaneously.</p>
+<p>The graph shows the situation in which each test is run synchronously, which can be an indication of the speed of the system.</p>
+
+
+{% endblock %}

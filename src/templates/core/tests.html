@@ -1,0 +1,36 @@
+{% extends 'core/layout.html' %}
+{% load static %}
+{% block content %}
+    <div class="col-sm-6">
+          {% for script, script_id in scripts %}
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+
+                <input
+                    type="button"
+                    name="button"
+                    class="btn btn-outline-dark test-button"
+                    id="submit"
+                    value="{{script}}"
+                />
+
+            </div><br>
+          {% endfor %}
+      </div>
+    <div class="col-sm-6" name="queue">
+        <h1>QUEUE</h1>
+        <div id="queue-elements">
+        </div>
+    </div>
+
+    <script src="{% static 'js/createListenersAndLaunchTest.js' %}"></script>
+    <script src="{% static 'js/singleTestQueueActions.js' %}"></script>
+{% endblock %}
+
+{% block content2 %}
+    
+    <div id="spin">
+        <h3>Results</h3>
+    </div>
+    <div name="results"></div>
+
+{% endblock %}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <title>Test Management</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% block head %}
+    {% endblock %}
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{% url 'core:home' %}">Home</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              RUN TESTS
+            </a>
+            <div class="dropdown-menu" style="align:center" aria-labelledby="">
+              <a class="dropdown-item stats" href="{% url 'core:run' %}">&nbsp;&nbsp;ALL</a><br>
+              <a class="dropdown-item stats" href="{% url 'core:tests' %}">&nbsp;&nbsp;BY NAME</a><br>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              STATISTICS
+            </a>
+            <div class="dropdown-menu" style="align:center" aria-labelledby="">
+              <a class="dropdown-item stats" href="{% url 'stats:latest' %}">&nbsp;&nbsp;LATEST STATS</a><br>
+              <a class="dropdown-item stats" href="{% url 'stats:by-id' %}">&nbsp;&nbsp;GET BY DATE</a><br>
+                <a class="dropdown-item stats" href="{% url 'stats:compare' %}">&nbsp;&nbsp;COMPARE TS</a><br>
+            </div>
+
+          </li>
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'logout' %}">LOGOUT</a></li>
+          {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid bg-1 text-center">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<div class="container-fluid bg-3 text-center">
+    {% block content2 %}
+    {% endblock %}
+</div>
+
+<footer class="container-fluid bg-4 text-center">
+  <p>FOOTER</p>
+</footer>
+
+</body>
+</html>

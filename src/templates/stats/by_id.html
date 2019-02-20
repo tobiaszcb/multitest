@@ -1,0 +1,16 @@
+{% extends 'core/layout.html' %}
+{% load static %}
+
+{% block content %}
+<h1>CHOOSE DATE TO SEE A CHART</h1>
+{% endblock %}
+
+{% block content2 %}
+
+    <form action="{% url 'stats:by-id' %}" method="get">
+        {% csrf_token %}
+        {{form}}<br><br>
+        <input class="btn" type="submit" value="GENERATE CHART">
+    </form>
+
+{% endblock %}
