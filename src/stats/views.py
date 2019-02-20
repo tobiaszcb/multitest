@@ -21,9 +21,12 @@ logger = logging.getLogger(__name__)
 @login_required
 def latest(request):
     testSuite = testDAO.getLatestTestSuite()
+    if testSuite is None:
+        testSuite = dict(testSuiteId=None)
+    context = {'testSuiteId': testSuite['testSuiteId']}
     return render(request=request,
                   template_name='stats/latest.html',
-                  context={'testSuiteId': testSuite['testSuiteId']})
+                  context=context)
 
 
 @login_required
@@ -32,6 +35,8 @@ def byId(request):
         form = TestSuiteIdForm(request.GET or None)
         if form.is_valid():
             testSuiteId = form.cleaned_data.get('test_id')
+            if testSuiteId is None: # if there's nothing in DB
+                return
             url = reverse('stats:by-id-result', kwargs={'testSuiteId': testSuiteId})
             return HttpResponseRedirect(url)
     else:

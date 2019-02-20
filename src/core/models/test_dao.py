@@ -21,7 +21,7 @@ class TestDAO:
 
     def connect(self):
         try:
-            global_init('newTests')
+            global_init('tests')
         except Exception as e:
             logger.error("Could not establish a connection to DB: {}".format(e))
 
@@ -54,7 +54,7 @@ class TestDAO:
             if testSuite is None:
                 return None
             return TestDAOHelper.TestSuiteToDict(testSuite)
-        except:
+        except Exception as e:
             logger.error("Error in getLatestTestSuite: {}".format(e))
 
     def getLatestTest(self, name) -> dict:

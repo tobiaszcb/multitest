@@ -86,6 +86,9 @@ class BokehService:
     ############ METHODS FOR CREATING CHART FOR COMPARING ALL CUMSUMS FROM TestSuiteS ############
 
     def getCompareChartDict(self, queryset: QuerySet) -> dict:
+        if queryset is None:
+            return
+
         ts_dict = {}  # dict containg info about every test suit
 
         # loop through TestSuite objects in mongoengine Queryset result
