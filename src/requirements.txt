@@ -5,7 +5,7 @@ bokeh==1.0.4
 celery==4.2.1
 certifi==2018.11.29
 chardet==3.0.4
-Django==2.1.5
+Django==2.2.13
 django-celery-results==1.0.4
 django-redis==4.10.0
 djangorestframework==3.9.1
